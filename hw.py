@@ -1,118 +1,55 @@
-    # Задача 16: Требуется вычислить, сколько раз встречается некоторое число X в массиве A[1..N]. 
-# Пользователь в первой строке вводит натуральное число N – количество элементов в массиве. 
-# В последующих  строках записаны N целых чисел Ai. Последняя строка содержит число X
+# # Задача 22: Даны два неупорядоченных набора целых чисел (может быть, с повторениями). Выдать без повторений в порядке возрастания 
+# # все те числа, которые встречаются в обоих наборах.
+# # Пользователь вводит 2 числа. n — кол-во элементов первого множества. 
+# # m — кол-во элементов второго множества. Затем пользователь вводит сами элементы множеств.
 
-# *Пример:*
+n = [int(i) for i in input('Enter the first list of values separated by a space: ').split()]
+n_set = list(n)
 
-# 5
-#     1 2 3 4 5
-#     3
-#     -> 1
+print(n)
+SortedN = filter(lambda x: n_set.count(x) == 1, n_set)
+SortedN = set(SortedN)
+print(SortedN)
 
-N = int(input("Enter the dimension of the array: "))
-X = int(input("Enter val X: "))
+m = [int(i) for i in input('Enter the second list of values separated by a space: ').split()]
+m_set = list(m)
+
+print(m)
+SortedM = filter(lambda x: m_set.count(x) == 1, m_set)
+SortedM = set(SortedM)
+print(SortedM)
+      
+Result=sorted(SortedN & SortedM)
+print(Result)
+
+
+
+# Задача 24: В фермерском хозяйстве в Карелии выращивают чернику. Она растет на круглой грядке,
+# причем кусты высажены только по окружности. Таким образом, у каждого куста есть ровно два соседних.
+# Всего на грядке растет N кустов.
+# Эти кусты обладают разной урожайностью, поэтому ко времени сбора на них
+# выросло различное число ягод – на i-ом кусте выросло ai ягод.
+# В этом фермерском хозяйстве внедрена система автоматического сбора черники.
+# Эта система состоит из управляющего модуля и нескольких собирающих модулей.
+# Собирающий модуль за один заход, находясь непосредственно перед некоторым кустом,
+# собирает ягоды с этого куста и с двух соседних с ним.
+# Напишите программу для нахождения максимального числа ягод, которое может собрать за один заход собирающий модуль,
+# находясь перед некоторым кустом заданной во входном файле грядки.
 from random import randint
-list = []
-count = 0
-for i in range(N):
-    #list.append(i + 1)
-    list.append(randint(0, 10))
-    if X == list[i]:
-        count += 1
-
-
-# print(list)
-# print(f"The value of {X} occurs {count} times")
-
-
-
-# Задача 18: Требуется найти в массиве A[1..N] самый близкий по величине элемент к заданному числу X. 
-# Пользователь в первой строке вводит натуральное число N – количество элементов в массиве. 
-# В последующих  строках записаны N целых чисел Ai. Последняя строка содержит число X
-
-# *Пример:*
-
-# 5
-#     1 2 3 4 5
-#     6
-#     -> 5
-
-N = int(input("Enter the dimension of the array: "))
-X = int(input("Enter val X: "))
-from random import randint
-list_1 = []
-temp_list = []
-min = 0
-max = 0
-for i in range(N):
-    list_1.append(randint(0, 10))
-
-print(list_1)
-
-MinTemp = -1
-MaxTemp = 1000
-MaxVal = list_1[i]
-
-for i in range(len(list_1)):
-    if MinTemp < list_1[i] and list_1[i] < X: 
-        MinTemp = list_1[i]
-        min = i
-    elif MaxVal < list_1[i]:
-        MaxVal = list_1[i]
-for j in range(len(list_1)):
-    if list_1[j] < MaxTemp and list_1[j] > X:
-        MaxTemp = list_1[j]
-        max = j
-
-print(f"{MinTemp}: {min}")
-print(f"{MaxTemp}: {max}")
-
-if X - MinTemp <= MaxTemp - X:
-    print(f"Result --> {list_1[min]}")
-else:
-    print(f"Result --> {list_1[max]}")
-    
-
-# *Задача 20: * В настольной игре Скрабл (Scrabble) каждая буква имеет определенную ценность. В случае с 
-# английским алфавитом очки распределяются так:
-# A, E, I, O, U, L, N, S, T, R – 1 очко; 
-# D, G – 2 очка; B, C, M, P – 3 очка; 
-# F, H, V, W, Y – 4 очка; 
-# K – 5 очков; 
-# J, X – 8 очков; 
-# Q, Z – 10 очков. 
-# А русские буквы оцениваются так: 
-# А, В, Е, И, Н, О, Р, С, Т – 1 очко; 
-# Д, К, Л, М, П, У – 2 очка; 
-# Б, Г, Ё, Ь, Я – 3 очка; 
-# Й, Ы – 4 очка; 
-# Ж, З, Х, Ц, Ч – 5 очков; 
-# Ш, Э, Ю – 8 очков; 
-# Ф, Щ, Ъ – 10 очков. 
-# Напишите программу, которая вычисляет стоимость введенного пользователем слова. 
-# Будем считать, что на вход подается только одно слово, которое содержит либо только английские, либо только русские буквы.
-
-# *Пример:*
-
-# ноутбук
-#     12
-
-
-
-
-word = input("Enter Word: ").upper()
-
-dictionary = {1:"AEIOULNSTRАВЕИНОРСТ",
-                2:"DGДКЛМПУ",
-                3:"BCMPБГЁЬЯ",
-                4:"FHVWYЙЫ",
-                5:"KЖЗХЦЧ",
-                8:"JXШЭЮ",
-                10:"QZФЩЪ"}
-
+n = int(input('Enter the number of shrubes in the garden:'))
 Result = 0
-for i in word:
-    for item in dictionary.items():
-        if i in item[1]:
-            Result += item[0]
-print(f"Result --> {Result}")
+
+if n < 3:
+    print("An incorrect value for the number of shrubes was entered.")
+else:
+    N = list(randint(1, 10) for i in range(n))
+    X = int(input('Enter the shrub number: '))
+    if X == len(N):
+        Result = N[-2] + N[X - 1] + N[0]
+    elif X == 1:
+        Result = N[X] + N[X - 1] + N[-1]
+    else:
+        Result = N[X - 2] + N[X-1] + N[X]
+    
+    print(N)
+    print(Result)
