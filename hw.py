@@ -3,14 +3,13 @@
 # Каждое число вводится с новой строки.
 
 
-'''
 a1 = int(input("Enter first element: "))
 d = int(input("Ender d: "))
 n = int(input("Enter size array: "))
 
 for i in range(n):
     print(a1 + (i) * d, end=' ')
-'''
+
 
 
 # Определить индексы элементов массива (списка), значения которых принадлежат заданному диапазону
