@@ -1,45 +1,27 @@
-# Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
-# *Пример:*
-
-# A = 3; B = 5 -> 243 (3⁵)
-#     A = 2; B = 3 -> 8 
-
-A = int(input("Enter a value A: "))
-B = int (input("Enter a value B: "))
-
-def PositivExponentiation (A, B):
-    if B == 0:
-        return 1
-    x = PositivExponentiation(A, B-1)
-    return A*x
- 
-def NegativExponentiation(A, B):
-    if B == 0:
-        return 1
-    x = NegativExponentiation(A, B+1)
-     
-    return 1/A*x
-    
-if B >= 0:
-    print(PositivExponentiation (A, B))
-else:
-    print(NegativExponentiation (A, B))
+# Задача 30:  Заполните массив элементами арифметической прогрессии. Её первый элемент, разность и количество элементов нужно ввести с клавиатуры. 
+# Формула для получения n-го члена прогрессии: an = a1 + (n-1) * d.
+# Каждое число вводится с новой строки.
 
 
-# Задача 28: Напишите рекурсивную функцию sum(a, b), возвращающую сумму двух целых неотрицательных чисел. 
-# Из всех арифметических операций допускаются только +1 и -1. Также нельзя использовать циклы.
+'''
+a1 = int(input("Enter first element: "))
+d = int(input("Ender d: "))
+n = int(input("Enter size array: "))
 
-# *Пример:*
+for i in range(n):
+    print(a1 + (i) * d, end=' ')
+'''
 
-# 2 2
-#     4
 
-a = int(input("Enter first value: "))
-b = int(input("Enter second value: "))
+# Определить индексы элементов массива (списка), значения которых принадлежат заданному диапазону
+# (т.е. не меньше заданного минимума и не больше заданного максимума)
 
-def Summ(a, b):
-    if b == 0:
-        return a
-    x = Summ(a + 1, b - 1)
-    return x
-print(Summ(a, b))
+
+array_1 = list(map(int, input("Enter the array separated by a space: ").split()))
+max = int(input("Enter max value: "))
+min = int(input("Enter min value: "))
+array_2 = []
+for i in range(len(array_1)):
+    if array_1[i] >= min and array_1[i] <= max:
+        array_2.append(i)
+print(array_2)
