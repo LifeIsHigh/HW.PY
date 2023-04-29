@@ -1,41 +1,45 @@
-# Задача 10: На столе лежат n монеток. Некоторые из них лежат вверх решкой, а некоторые – гербом.
-# Определите минимальное число монеток, которые нужно перевернуть, чтобы все монетки были повернуты 
-# вверх одной и той же стороной. Выведите минимальное количество монет, которые нужно перевернуть
+# Напишите программу, которая на вход принимает два числа A и B, и возводит число А в целую степень B с помощью рекурсии.
+# *Пример:*
 
-# N = int(input("Enter the number of coins: "))
-# Count = 0
+# A = 3; B = 5 -> 243 (3⁵)
+#     A = 2; B = 3 -> 8 
 
-# for i in range(N):
-#     Nums = int(input("Heads or tails? --> "))
-#     if Nums > 0:
-#         Count += 1
-# Result = N - Count
-# print(f"You need to flip {Result} coins")
+A = int(input("Enter a value A: "))
+B = int (input("Enter a value B: "))
 
-
-# Задача 12: Петя и Катя – брат и сестра. Петя – студент, а Катя – школьница. Петя помогает Кате по математике. 
-# Он задумывает два натуральных числа X и Y (X,Y≤1000), а Катя должна их отгадать. Для этого Петя делает 
-# две подсказки. Он называет сумму этих чисел S и их произведение P. Помогите Кате отгадать задуманные Петей числа.
-
-# Val = int(input("Enter Value: "))
-# Z = 1000
-# for i in range(Z):
-#     for j in range(Z):
-#         if Val == i + j and Val == i * j:
-#             x = i
-#             y = j
-#             print(f"{i}; {j}")
-
-
-#Задача 14: Требуется вывести все целые степени двойки (т.е. числа вида 2k), не превосходящие числа N.
-
-# N = int(input("Enter Value: "))
-# Count = 0
-# for i in range(N):
-#     Count = 2 ** i
-#     if Count <= N:
-#         print(i)
-#         i += 1
-#     else:
-#         break
+def PositivExponentiation (A, B):
+    if B == 0:
+        return 1
+    x = PositivExponentiation(A, B-1)
+    return A*x
+ 
+def NegativExponentiation(A, B):
+    if B == 0:
+        return 1
+    x = NegativExponentiation(A, B+1)
+     
+    return 1/A*x
     
+if B >= 0:
+    print(PositivExponentiation (A, B))
+else:
+    print(NegativExponentiation (A, B))
+
+
+# Задача 28: Напишите рекурсивную функцию sum(a, b), возвращающую сумму двух целых неотрицательных чисел. 
+# Из всех арифметических операций допускаются только +1 и -1. Также нельзя использовать циклы.
+
+# *Пример:*
+
+# 2 2
+#     4
+
+a = int(input("Enter first value: "))
+b = int(input("Enter second value: "))
+
+def Summ(a, b):
+    if b == 0:
+        return a
+    x = Summ(a + 1, b - 1)
+    return x
+print(Summ(a, b))
